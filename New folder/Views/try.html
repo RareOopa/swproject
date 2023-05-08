@@ -1,0 +1,365 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <title>Interactive Full Feed Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+        }
+
+        .feed-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .post {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .post h2 {
+            margin-top: 0;
+        }
+
+        .post p {
+            margin-bottom: 1rem;
+        }
+
+        .like-btn,
+        .comment-btn {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 0.25rem;
+            padding: 0.5rem;
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+
+        .like-btn:hover,
+        .comment-btn:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>My Feed</h1>
+    </header>
+    <div class="feed-container">
+        <div class="post">
+            <h2>Post Title</h2>
+            <p>Post content goes here</p>
+            <button class="like-btn">Like</button>
+            <button class="comment-btn">Comment</button>
+        </div>
+        <div class="post">
+            <h2>Another Post Title</h2>
+            <p>More post content here</p>
+            <button class="like-btn">Like</button>
+            <button class="comment-btn">Comment</button>
+        </div>
+    </div>
+    <script>
+        const likeBtns = document.querySelectorAll(".like-btn");
+        const commentBtns = document.querySelectorAll(".comment-btn");
+
+        likeBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                btn.classList.toggle("liked");
+                if (btn.classList.contains("liked")) {
+                    btn.textContent = "Liked";
+                } else {
+                    btn.textContent = "Like";
+                }
+            });
+        });
+
+        commentBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const post = btn.parentNode;
+                const commentInput = document.createElement("input");
+                const commentSubmitBtn = document.createElement("button");
+                commentInput.type = "text";
+                commentInput.placeholder = "Add a comment";
+                commentSubmitBtn.textContent = "Submit";
+                post.appendChild(commentInput);
+                post.appendChild(commentSubmitBtn);
+                commentSubmitBtn.addEventListener("click", () => {
+                    const comment = document.createElement("p");
+                    comment.textContent = commentInput.value;
+                    post.insertBefore(comment, commentInput);
+                    commentInput.value = "";
+                    post.removeChild(commentInput);
+                    post.removeChild(commentSubmitBtn);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <title>Interactive Full Feed Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+        }
+
+        .feed-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .post {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .post h2 {
+            margin-top: 0;
+        }
+
+        .post img {
+            max-width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .post p {
+            margin-bottom: 1rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        label {
+            margin-bottom: 0.5rem;
+        }
+
+        input[type='text'] {
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            border: 1px solid #ccc;
+            margin-bottom: 0.5rem;
+        }
+
+        button[type='submit'] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 0.25rem;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        button[type='submit']:hover {
+            background-color: #555;
+        }
+
+        .comment-container {
+            margin-top: 1rem;
+        }
+
+        .comment {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>My Feed</h1>
+    </header>
+    <div class="feed-container">
+        <div class="post">
+            <h2>Post Title</h2>
+            <img src="https://via.placeholder.com/600x400" alt="Post Image">
+            <p>Post content goes here</p>
+            <form>
+                <label for="comment-input">Add a comment:</label>
+                <input type="text" id="comment-input" name="comment" placeholder="Enter your comment">
+                <button type="submit">Submit</button>
+            </form>
+            <div class="comment-container">
+                <p class="comment">John Doe: Comment text goes here</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const form = document.querySelector("form");
+        const commentInput = document.getElementById("comment-input");
+        const commentContainer = document.querySelector(".comment-container");
+
+        form.addEventListener("submit", event => {
+            event.preventDefault();
+            const comment = document.createElement("p");
+            comment.textContent = "You: " + commentInput.value;
+            commentContainer.appendChild(comment);
+            commentInput.value = "";
+        });
+    </script>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Interactive Full Feed Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+        }
+
+        .feed-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .post {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .post h2 {
+            margin-top: 0;
+        }
+
+        .post img {
+            max-width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .post p {
+            margin-bottom: 1rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        label {
+            margin-bottom: 0.5rem;
+        }
+
+        input[type='text'] {
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            border: 1px solid #ccc;
+            margin-bottom: 0.5rem;
+        }
+
+        button[type='submit'] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 0.25rem;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        button[type='submit']:hover {
+            background-color: #555;
+        }
+
+        .comment-container {
+            margin-top: 1rem;
+        }
+
+        .comment {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>My Feed</h1>
+    </header>
+    <div class="feed-container">
+        <div class="post">
+            <h2>Post Title</h2>
+            <img src="https://via.placeholder.com/600x400" alt="Post Image">
+            <p>Post content goes here</p>
+            <form>
+                <label for="comment-input">Add a comment:</label>
+                <input type="text" id="comment-input" name="comment" placeholder="Enter your comment">
+                <button type="submit" name="submit">Submit</button>
+            </form>
+            <div class="comment-container">
+                <p class="comment">John Doe: Comment text goes here</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const form = document.querySelector("form");
+        const commentInput = document.getElementById("comment-input");
+        const commentContainer = document.querySelector(".comment-container");
+
+        form.addEventListener("submit", event => {
+            event.preventDefault();
+            const comment = document.createElement("p");
+            comment.textContent = "You: " + commentInput.value;
+            commentContainer.appendChild(comment);
+            commentInput.value = "";
+        });
+    </script>
+</body>
+
+</html>
